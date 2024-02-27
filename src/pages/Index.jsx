@@ -48,7 +48,9 @@ const Index = () => {
           <Switch id="one-way" />
           <FormLabel htmlFor="one-way">One Way Only</FormLabel>
         </Stack>
-        <Button colorScheme="blue">Search</Button>
+        <Button colorScheme="blue" as="a" href="/travelers-info">
+          Add Travelers Info
+        </Button>
       </Stack>
 
       {/* Travel Destinations */}
