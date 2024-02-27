@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Container, Heading, Input, Stack, InputGroup, InputLeftElement, Button, SimpleGrid, Text, Image, Flex, IconButton } from "@chakra-ui/react";
+import { Box, Container, Heading, Input, Stack, InputGroup, InputLeftElement, Button, SimpleGrid, Text, Image, Flex, IconButton, Switch, FormLabel } from "@chakra-ui/react";
 import { FaSearch, FaPlane, FaHotel, FaCarAlt } from "react-icons/fa";
 
 const travelDestinations = [
@@ -25,15 +25,28 @@ const Index = () => {
       </Flex>
 
       {/* Search Form */}
-      <Box mb={10}>
+      <Stack mb={10} spacing={4}>
         <InputGroup>
           <InputLeftElement pointerEvents="none" children={<FaSearch color="gray.300" />} />
-          <Input type="text" placeholder="Search destinations" />
-          <Button ml={2} colorScheme="blue">
-            Search
-          </Button>
+          <Input placeholder="Origin" />
+          <Input placeholder="Destination" />
         </InputGroup>
-      </Box>
+        <InputGroup>
+          <Input type="date" placeholder="Outbound Date" />
+          <Input type="date" placeholder="Return Date" />
+        </InputGroup>
+        <SimpleGrid columns={2} spacing={2}>
+          <Input placeholder="No. of Passengers" />
+          <Input placeholder="Flight Class" />
+        </SimpleGrid>
+        <Stack direction="row" align="center">
+          <Switch id="multi-city" />
+          <FormLabel htmlFor="multi-city">Multi City Search</FormLabel>
+          <Switch id="one-way" />
+          <FormLabel htmlFor="one-way">One Way Only</FormLabel>
+        </Stack>
+        <Button colorScheme="blue">Search</Button>
+      </Stack>
 
       {/* Travel Destinations */}
       <Heading as="h2" size="md" mb={4}>
