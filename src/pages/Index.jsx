@@ -9,7 +9,27 @@ const travelDestinations = [
   { name: "Sydney", country: "Australia" },
 ];
 
+import { useState } from "react";
+
 const Index = () => {
+  const [departure, setDeparture] = useState("");
+  const [arrival, setArrival] = useState("");
+  const [locationDeparture, setLocationDeparture] = useState("");
+  const [locationArrival, setLocationArrival] = useState("");
+
+  const handleSearch = () => {
+    // This is where you would typically make an API call to the backend
+    // For demonstration, we are logging to the console instead
+    const searchParameters = {
+      departure,
+      arrival,
+      locationDeparture,
+      locationArrival,
+    };
+    console.log("Search Parameters: ", searchParameters);
+    // The Amadeus API call would take place here in a real application
+  };
+
   return (
     <Container maxW="container.xl" p={4}>
       {/* Navigation Bar */}
@@ -28,12 +48,12 @@ const Index = () => {
       <Stack mb={10} spacing={4}>
         <InputGroup>
           <InputLeftElement pointerEvents="none" children={<FaSearch color="gray.300" />} />
-          <Input placeholder="Origin" />
-          <Input placeholder="Destination" />
+          <Input placeholder="Origin" value={locationDeparture} onChange={(e) => setLocationDeparture(e.target.value)} />
+          <Input placeholder="Destination" value={locationArrival} onChange={(e) => setLocationArrival(e.target.value)} />
         </InputGroup>
         <InputGroup>
-          <Input type="date" placeholder="Outbound Date" />
-          <Input type="date" placeholder="Return Date" />
+          <Input type="date" placeholder="Outbound Date" value={departure} onChange={(e) => setDeparture(e.target.value)} />
+          <Input type="date" placeholder="Return Date" value={arrival} onChange={(e) => setArrival(e.target.value)} />
         </InputGroup>
         <SimpleGrid columns={2} spacing={2}>
           <Input placeholder="Travelers" type="number" min={1} max={18} />
@@ -48,7 +68,7 @@ const Index = () => {
           <Switch id="one-way" />
           <FormLabel htmlFor="one-way">One Way Only</FormLabel>
         </Stack>
-        <Button colorScheme="blue" as="a" href="/travelers-info">
+        <Button colorScheme="blue" onClick={handleSearch}>
           Add Travelers Info
         </Button>
       </Stack>
