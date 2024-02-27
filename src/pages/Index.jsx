@@ -36,7 +36,10 @@ const Index = () => {
           <Input type="date" placeholder="Return Date" />
         </InputGroup>
         <SimpleGrid columns={2} spacing={2}>
-          <Input placeholder="No. of Passengers" />
+          <Input placeholder="Travelers" type="number" min={1} max={18} />
+          <Text fontSize="sm" color="gray.500">
+            Maximum of 9 CHILD, ADULT, YOUGHT passengers older than 2 yo. Each adult can travel with one INFANT. Total max travelers: 18.
+          </Text>
           <Input placeholder="Flight Class" />
         </SimpleGrid>
         <Stack direction="row" align="center">
